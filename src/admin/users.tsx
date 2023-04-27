@@ -13,6 +13,7 @@ import {
     TextInput,
     Filter,
     email,
+    ReferenceField,
 } from 'react-admin';
 const validateEmail = email();
 
@@ -31,6 +32,14 @@ export const UserList = (props: any) => (
     <List {...props} filters={<UserFilter/>}>
         <Datagrid>
             <TextField source="id" />
+            <ReferenceField  
+            link={(record, reference) => `/${reference}/${record.partnerId}/show`}
+            label="Partner" 
+            source="partnerId" 
+            reference="partners">
+                <TextField source="name" />
+            </ReferenceField>
+            
             <TextField source="name" />
             <TextField source="email" />
             <TextField source="role" />
