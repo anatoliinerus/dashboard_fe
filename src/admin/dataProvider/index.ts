@@ -1,4 +1,5 @@
-import crudProvider from 'ra-data-nestjsx-crud';
+// import crudProvider from 'ra-data-nestjsx-crud';
+import crudProvider from './dataProvider';
 import {  fetchUtils } from 'react-admin';
 
 const httpClient = (url: string, options: any = {}) => {

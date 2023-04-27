@@ -1,5 +1,6 @@
 import { AuthProvider } from 'react-admin';
 import axios from "axios";
+import jwt from "jwt-decode";
 
 const authProvider: AuthProvider = {
     login: async ({ username, password }) => {
@@ -26,12 +27,18 @@ const authProvider: AuthProvider = {
 
         return role ? Promise.resolve(role) : Promise.reject();
     },
-    getIdentity: () =>
-        Promise.resolve({
-            id: 'user',
-            fullName: 'Sir Shrek',
+    getIdentity: () => {
+        const token = localStorage.getItem('token') || '';
+
+         const parsedJwt: {name: string, id: number} = jwt(token);
+
+        return Promise.resolve({
+            id: parsedJwt.id,
+            fullName: parsedJwt.name,
             avatar: 'https://i.insider.com/60817ec5354dde0018c06960?width=700'
-        }),
+        });
+    }
+
 };
 
 export default authProvider;
