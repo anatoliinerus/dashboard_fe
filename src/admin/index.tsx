@@ -5,7 +5,7 @@ import Dashboard from "./Dashboard";
 import UserIcon from '@mui/icons-material/People';
 import {UserCreate, UserEdit, UserList, UserShow} from "./users";
 import { Route } from "react-router";
-import { ProfileEdit } from "./test";
+import { ProfileEdit } from "./profiles";
 import {MyLayout} from './MyLayout';
 
 const App = () => (
